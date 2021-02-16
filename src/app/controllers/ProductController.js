@@ -1,6 +1,7 @@
+const { formatPrice } = require('../../lib/utils');
+
 const Category = require('../models/Category');
 const Product = require('../models/Product');
-const Procuts = require('../models/Product');
 
 module.exports = {
   create(req, res) {
@@ -36,6 +37,9 @@ module.exports = {
     const product = results.rows[0];
 
     if (!product) return res.send('Product not found!');
+
+    product.old_price = formatPrice(product.old_price);
+    product.price = formatPrice(product.price);
 
     results = await Category.all();
     const categories = results.rows;
