@@ -52,6 +52,11 @@ module.exports = {
 
     return res.redirect(`/products/${req.body.id}/edit`);
   },
+  async delete(req, res) {
+    await Product.delete(req.body.id);
+
+    return res.redirect('/');
+  },
   async edit(req, res) {
     let results = await Product.find(req.params.id);
     const product = results.rows[0];
