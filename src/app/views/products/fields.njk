@@ -61,7 +61,7 @@
     </div>
 </div>
 
-{% if product.status %}
+{% if (product.status == '1') or (product.status == '0') %}
 <div class="item">
     <div>Disponível ?</div>
     <div>
@@ -72,7 +72,8 @@
                 value="1" 
                 {% if product.status == '1' %}
                     checked
-                {% endif %}> Sim 
+                {% endif %}>
+            Sim 
         </span>
         <span>
             <input 
@@ -81,7 +82,8 @@
                 value="0" 
                 {% if product.status == '0' %}
                     checked
-                {% endif %}> Não
+                {% endif %}>
+            Não
         </span>
     </div>
 </div>
