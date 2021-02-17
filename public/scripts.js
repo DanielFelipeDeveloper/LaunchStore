@@ -52,10 +52,26 @@ const PhotosUpload = {
     const container = document.createElement('div');
     container.classList.add('photo');
 
-    container.onclick = () => alert('remover foto');
+    container.onclick = PhotosUpload.removePhoto;
 
     container.appendChild(image);
 
+    container.appendChild(PhotosUpload.getRemoveButton());
+
     return container;
+  },
+  getRemoveButton() {
+    const button = document.createElement('i');
+    button.classList.add('material-icons');
+    button.innerHTML = 'close';
+
+    return button;
+  },
+  removePhoto(event) {
+    const photoDiv = event.target.parentNode;
+    const photosArray = Array.from(PhotosUpload.preview.children);
+    const index = photosArray.indexOf(photoDiv);
+
+    photoDiv.remove();
   }
 }
